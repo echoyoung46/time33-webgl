@@ -45,16 +45,22 @@
 					<h1>WebGL</h1>
 					<!--<h3>A Rasterization API</h3>-->
 					<p>
-						<small>Created by <a href="http://twitter.com/hakimel">@yangwt</a></small>
+						<small>Created by <a href="#">@yangwt</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>What?</h2>
-					<p>
-						WebGL是一项用来在网页上绘制和渲染复杂三维图形（3D图形），并允许用户与之进行交互的技术。
-					</p>
-                    <p>WebGL 本质上是基于光栅化的 API ,而不是基于 3D 的 API。</p>
+                    <section>
+                        <h2>What?</h2>
+                        <p>
+                            WebGL是一项用来在网页上绘制和渲染复杂三维图形（3D图形），并允许用户与之进行交互的技术。
+                        </p>
+                        <p>WebGL 本质上是基于光栅化的 API ,而不是基于 3D 的 API。</p>
+                    </section>
+                    <section>
+                        <h2>光栅化</h2>
+                        <p>把物体的数学描述以及与物体相关的颜色信息转换为屏幕上用于对应位置的像素及用于填充像素的颜色，这个过程称为光栅化。</p>
+                    </section>
 				</section>
                 <section>
 					<h2>优势</h2>
@@ -77,9 +83,10 @@
                     
 					<section>
 						<h2>着色器</h2>
-						<p>WebGL只包括两件事——坐标和颜色。</p>
-                        <p>所以要定义两个着色器———顶点着色器和片元着色器。</p>
-                        <p>顶点着色器提供坐标,片元着色器提供颜色</p>
+						<p>WebGL只关注两件事——坐标和颜色。</p>
+                        <p>使用WebGL程序的任务就是实现具有投影矩阵坐标和颜色的WebGL对象即可。</p>
+                        <p>定义两个着色器———顶点着色器和片元着色器。顶点着色器提供坐标,片元着色器提供颜色</p>
+                        <p>tips: 无论画板尺寸多大，投影矩阵坐标的范围只会在-1到1之间</p>
 						<br>
 					</section>
 					<section>
@@ -327,6 +334,10 @@ gl.drawArrays(gl.TRIANGLES, 0, 16*6);
                     
                     <section>
                         <p>Matrix适合运用在分层的动画中，比如胳膊、树枝。</p>
+                    </section>
+                    
+                    <section>
+                        <iframe src="demo/3d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                 </section>
                 
