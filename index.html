@@ -108,17 +108,84 @@ gl_FragColor = vec4(0, 1, 0, 1); // green
                        <img width="320" height="250" src="images/fragment_shader.jpg" alt="">
 					</section>
 					<section>
-						<p>着色器是用GLSL写的方法。每个顶点都要引用一次，将定义的3D坐标点转化为屏幕可以显示出来的2D顶点。</p>
-                        <p>描绘图形时，每个px都会通过片元着色器得到该px的颜色。</p>
+						<p>着色器是用GLSL写的方法。处理每个顶点时都要引用一次，将定义的3D坐标点转化为屏幕可以显示出来的2D顶点，即投影矩阵的坐标。</p>
+                        <p>用户可以将投影矩阵的值存储在特定的变量gl_Position中。GPU会处理这些值，并将它们存储在内部。</p>
+                        <p>片元着色器中gl_fragColor设置颜色，描绘图形时，每个px都会通过片元着色器得到该px的颜色。</p>
 						<br>
 						<a href="#/2">
 							<img width="378" height="238" src="images/vertex-shader-anim.gif">
 						</a>
 					</section>
                     <section>
+                        <ul>
+                            <li>产生三个顶点</li>
+                            <li>GPU会使用它们来绘制三角形</li>
+                            <li>将三角形光栅化，或者说是使用像素点绘制出来</li>
+                            <li>对每一个像素点，GPU会调用片元着色器来确定该像素的颜色</li>
+                        </ul>
                         <img src="images/fragment_operations.jpg" alt="">
                     </section>
 				</section>
+                
+                <section>
+                    <section>
+                        <h2>WebGL API</h2>
+                    </section>
+                    
+                    <section>
+                        <p>WebGL context</p>
+                        <pre><code class="hljs" data-trim contenteditable>
+var canvas = document.getElementById("canvas");
+var gl = getWebGLContext(canvas);
+					   </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>变量类型</h2>
+                        <p>const 常量</p>
+                        <p class="fragment">attribute 顶点着色器定义的全局变量，存储可变的顶点坐标值</p>
+                        <p class="fragment">uniform 着色器定义的只读变量</p>
+                        <p class="fragment">varing 定义在顶点和片元着色器之间传递的变量，在顶点着色器定义，片元着色器中只读</p>
+                    </section>
+                    
+                    <section>
+                        <h2>创建program</h2>
+                        <p>webgl-utils.js</p>
+                        <p>createProgramFromScript(gl, ["2d-vertex-shader", "2d-fragment-shader"]); 创建一个GLSL Program</p>
+                    </section>
+                    
+                    <section>
+                        <h2>查找数据</h2>
+                        <p>gl.getAttribLocation(program, "a_position"); </p>
+                        <p class="fragment">gl.getUniformLocation(program, "a_position"); </p>
+                    </section>
+                    
+                    <section>
+                        <h2>设置分辨率</h2>
+                        <p>gl.uniform2f(location, canvas.width, canvas.height); 设置分辨率</p>
+                        <p>gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1); 设置随机颜色</p>    
+                    </section>
+                    
+                    <section>
+                        <h2>缓冲区</h2>
+                        <p>gl.createBuffer(); 创建缓冲区</p>
+                        <p class="fragment">gl.bindBuffer(gl.ARRAY_BUFFER, buffer); 绑定缓冲区为当前操作对象</p>
+                        <p class="fragment">gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([]), gl.STATIC_DRAW); 将内存中的顶点数组复制到当前操作的数据缓冲区中</p>
+                    </section>
+                    
+                    <section>
+                        <h2></h2>
+                        <p class="fragment">gl.enableVertexAttribArray(anyVertexAttributeLocation); 开启数组模式</p>
+                        <p class="fragment">gl.vertexAttribPointer(index, size, type, normalized, stride, offset); 把当前工作的数据缓冲区指定给数组</p>
+                    </section>
+                    
+                    <section>
+                        <h2>画图</h2>
+                        <p>gl.clear(gl.COLOR_BUFFER_BIT); 清空canvas</p>
+                        <p class="fragment">gl.uniformMatrix(matrixLocation, false, matrix); 创建矩阵</p>
+                        <p class="fragment">gl.drawArray(gl.TRIANGLE, 0, 3); 意味着有3个顶点要处理</p>
+                    </section>
+                </section>
                 
                 <section>
                     <section>
@@ -571,6 +638,14 @@ var matrix = translationMatrix;
 					<iframe src="demo/cat.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 				</section>
 
+                <section>
+                    <h2>Recommend Link</h2>
+                    <p><a href="webglfundamentals.org" target="_blank">webglfundamentals.org</a></p>
+                    <p><a href="www.tutorailspoint.com/webgl/" target="_blank">www.tutorailspoint.com/webgl/</a></p>
+                    <p><a href="learningwebgl.com/blog/" target="_blank">learningwebgl.com/blog/</a></p>
+                    <p><a href="www.html5china.com/HTML5features/WebGL/" target="_blank">www.html5china.com/HTML5features/WebGL/</a></p>
+                </section>
+                
 				<section>
 					<h1>THE END</h1>
                     <p>Thank you.</p>
