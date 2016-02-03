@@ -255,7 +255,7 @@ gl.drawArrays(gl.TRIANGLES, 0, 18);
                                
                     </section>
                     <section>
-                        <iframe src="demo/2d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/2d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                     <!--<section>
                         <h2>Why vec4?</h2>
@@ -340,7 +340,36 @@ gl.drawArrays(gl.TRIANGLES, 0, 16*6);
                         </code></pre>
                     </section>
                     <section>
-                        <iframe src="demo/3d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/3d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                    </section>
+                    
+                    <section>
+                        <h2>顶点顺序</h2>
+                        <p>WebGL有前面和后面的概念 （看得见的为前面）。</p>
+                        <p>前面的顶点坐标以顺时针的顺序定义</p>
+                        <p>后面的顶点坐标以逆时针的顺序定义</p>
+                        <p>
+                            <img src="images/triangle-winding.svg" alt="" class="webgl_center" width="400">
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <iframe src="demo/backfacing.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                    </section>
+                    
+                    <section>
+                        <p>Not</p>
+                        <pre><code class="hljs" data-trim contenteditable>
+  1,   2,   3,
+ 40,  50,  60,
+700, 800, 900,
+                        </code></pre>
+                        <p>But</p>
+                        <pre><code class="hljs" data-trim contenteditable>
+  1,   2,   3,
+700, 800, 900,
+ 40,  50,  60,
+                        </code></pre>
                     </section>
                 </section>
                 
@@ -350,7 +379,7 @@ gl.drawArrays(gl.TRIANGLES, 0, 16*6);
                         <li>动画</li>
                         <li>纹理</li>
                         <li>透视</li>
-                        <li>照相机</li>
+                        <li>镜头</li>
                     </ul>
                 </section>    
                     
@@ -399,12 +428,12 @@ gl.drawArrays(gl.TRIANGLES, 0, 16*6);
                         <img src="images/scale3.png" alt="">
                     </section>
                     
-                    <section>
+                    <!--<section>
                         <p>Matrix适合运用在分层的动画中，比如胳膊、树枝。</p>
-                    </section>
+                    </section>-->
                     
                     <section>
-                        <iframe src="demo/3d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/3d.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                 </section>
                 
@@ -518,7 +547,7 @@ image.addEventLisenter('load', function() {
                         <a href="demo/textures.html" target="_blank"></a>
                     </section>
                     <section>
-                        <iframe src="demo/textures.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/textures.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
 				</section>
                 
@@ -552,27 +581,27 @@ void main() {
                     </section>
                     
                     <section>
-                        <iframe src="demo/perspective.html" width="545" height="455" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/perspective.html" width="545" height="455" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                 </section>
                 
                 <section>
                     <section>
-                        <h2>照相机</h2>
+                        <h2>镜头</h2>
                         <div class="compare-box">
-                            <div class="conpare-content">
-                            <p>移动相机</p>
-                                <iframe src="demo/camera-move.html?mode=0" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                            <div class="conpare-content webgl-half">
+                                <p>移动镜头</p>
+                                <iframe src="demo/camera-move.html?mode=0" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                             </div>
-                            <div class="conpare-content">
+                            <div class="conpare-content webgl-half">
                                 <p>移动物体</p>
-                                <iframe src="demo/camera-move.html?mode=1" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                                <iframe src="demo/camera-move.html?mode=1" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <p>照相机移到原点</p>
-                        <iframe src="demo/camera-move.html?mode=2" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <p>镜头移到原点</p>
+                        <iframe src="demo/camera-move.html?mode=2" width="400" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                     <section>
                         <p>画一圈F</p>
@@ -608,14 +637,14 @@ var numFs = 5;
                         </code></pre>
                     </section>
                     <section>
-                        <p>画相机</p>
+                        <p>画镜头</p>
                         <pre><code class="hljs" data-trim contenteditable>
  var cameraMatrix = makeTranslation(0, 0, radius * 1.5);
   cameraMatrix = matrixMultiply(cameraMatrix, makeYRotation(cameraAngleRadians);
                         </code></pre>
                     </section>
                     <section>
-                        <p>根据相机矩阵计算视图矩阵</p>
+                        <p>根据镜头矩阵计算视图矩阵</p>
                         <pre><code class="hljs" data-trim contenteditable>
 var viewMatrix = makeInverse(cameraMatrix);
                         </code></pre>
@@ -629,13 +658,19 @@ var matrix = translationMatrix;
                         </code></pre>
                     </section>
                     <section>
-                        <iframe src="demo/camera.html" width="545" height="455" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                        <iframe src="demo/camera.html" width="545" height="455" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
                     </section>
                 </section>
                 
                 <section>
-					<h2>Cat</h2>
-					<iframe src="demo/cat.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                    <section>
+                        <h1>福利</h1>
+                    </section>
+                    
+                    <section>
+                        <h2>miao~</h2>
+                        <iframe src="demo/cat.html" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                    </section>
 				</section>
 
                 <section>
